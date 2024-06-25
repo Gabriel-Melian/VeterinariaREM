@@ -7,7 +7,7 @@ const router = Router();
 //http://localhost:3000/mascotas (GET Thunderclient)
 router.get("/mascotas", async (req, res) => {
     const mascotas = await getMascotas();
-    res.status(200).json(mascotas);
+    res.status(200).render('mascotas', { mascotas });
 });
 
 //http://localhost:3000/mascotas/nuevo (POST Thunderclient)
@@ -17,6 +17,7 @@ router.post("/mascotas/nuevo", async (req, res) => {
     res.status(200).json(result);
 });
 /*
+{
 "nombre": "Juan",
 "especie": "Perro",
 "raza": "Chihuahua",
@@ -24,6 +25,7 @@ router.post("/mascotas/nuevo", async (req, res) => {
 "caractGenerales": "Cachorro",
 "idHistoriaClinica": 1,
 "idDueno": 1
+}
 */
 
 //http://localhost:3000/mascotas/2 (GET Thunderclient)

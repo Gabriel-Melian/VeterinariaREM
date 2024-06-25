@@ -1,0 +1,34 @@
+extends layout
+
+block headerContent
+  h1 Panel de control de Mascotas
+
+block content
+  h2
+    | Mascotas 
+    a.btn(href="/mascotas/nuevo") Nueva Mascota
+  table.tabla
+    thead
+      tr
+        th Nombre
+        th Especie
+        th Raza
+        th Fecha de Nacimiento
+        th Características Generales
+        th Dueño
+        th Acciones
+    tbody
+      each mascota in mascotas
+        tr
+          td= mascota.nombre
+          td= mascota.especie
+          td= mascota.raza
+          td= mascota.fechaNac
+          td= mascota.caractGenerales
+          td= mascota.idDueno
+          td
+            a.btn(href=`/mascotas/${mascota.id}/historiaClinica`) Historia Clínica
+            br
+            br
+            a.btn(href=`/mascotas/${mascota.id}/editar`) Editar
+            //a.btn(href=`/mascotas/${mascota.id}/eliminar`) Eliminar

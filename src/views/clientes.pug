@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  h2
+    | Clientes 
+    a.btn(href="/clientes/nuevo") Nuevo Cliente
+  table.tabla
+    thead
+      tr
+        th Apellido
+        th Nombre
+        th DNI
+        th Teléfono
+        th Email
+        th Acciones
+    tbody
+      each dueno in duenos
+        tr
+          td= dueno.apellido
+          td= dueno.nombre
+          td= dueno.dni
+          td= dueno.telefono
+          td= dueno.email
+          td
+            a.btn(href=`/clientes/${dueno.id}/verMascotas`) Ver Mascotas
+            br
+            br
+            a.btn(href=`/clientes/${dueno.id}/editar`) Editar

@@ -1,0 +1,22 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Layout
+    link(rel="stylesheet", type="text/css", href="../estilo.css")
+  body
+    header
+      .container
+        block headerContent
+          h1 Bienvenida, Dra. Rut Machado
+          nav
+            ul
+              //li: a(href="/calendario") Calendario
+              li: a(href="/mascotas") Mascotas
+    main
+      .container
+        block content
+    //footer
+    //  .container
+    //    p Derechos de autor © 2024. Todos los derechos reservados.
