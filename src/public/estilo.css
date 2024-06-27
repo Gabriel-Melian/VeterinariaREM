@@ -231,3 +231,75 @@ footer {
 .btn-ingresar:hover {
     background-color: #007f63;
 }
+
+/*Formulario Nueva Mascota*/
+#modal-container.hidden {
+    display: none;
+}
+
+#modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 550px; /*tamanio*/
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    max-height: 90%; /*Evita que el modal sea mas grande que la pantalla*/
+    overflow-y: auto; /*Añade scroll si el contenido es demasiado grande*/
+}
+
+.modal label {
+    display: block;
+    margin-top: 10px;
+}
+
+.modal input,
+.modal select,
+.modal textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.modal button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.modal button[type="submit"] {
+    background-color: #009879;
+    color: white;
+}
+
+.modal button[type="submit"]:hover {
+    background-color: #007f63;
+}
+
+.modal button[type="button"] {
+    background-color: #ccc;
+}
+
+.modal button[type="button"]:hover {
+    background-color: #999;
+}

@@ -6,7 +6,46 @@ block headerContent
 block content
   h2
     | Mascotas 
-    a.btn(href="/mascotas/nuevo") Nueva Mascota
+    a.btn(href="#", id="nueva-mascota-btn") Nueva Mascota
+
+    div#modal-container.hidden
+      div.modal
+        form#form-nueva-mascota(method="POST", action="/mascotas/nuevo")
+          label(for="nombre") Nombre:
+          input(type="text", name="nombre", id="nombre", required)
+
+          label(for="especie") Especie:
+          select(name="especie", id="especie", required)
+            option(value="Perro") Perro
+            option(value="Gato") Gato
+            option(value="Reptil") Reptil
+            option(value="Ave") Ave
+            option(value="Cervido") Cérvido
+
+          label(for="raza") Raza:
+          input(type="text", name="raza", id="raza", required)
+
+          label(for="sexo") Sexo:
+          select(name="sexo", id="sexo", required)
+            option(value="Macho") Macho
+            option(value="Hembra") Hembra
+
+          label(for="fechaNac") Nacimiento:
+          input(type="date", name="fechaNac", id="fechaNac", required)
+
+          label(for="caractGenerales") Características Generales:
+          textarea(name="caractGenerales", id="caractGenerales")
+
+          label(for="idDueno") Dueño:
+          select(name="idDueno", id="idDueno")
+            option(value="") Sin dueño
+            // Aquí debes agregar las opciones para los dueños desde el servidor
+            //each dueno in duenos
+            //  option(value=dueno.id)= `${dueno.nombre} ${dueno.apellido}`
+
+          button(type="submit") Crear
+          button(type="button", id="cancelar-btn") Cancelar
+
   table.tabla
     thead
       tr
