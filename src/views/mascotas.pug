@@ -39,11 +39,10 @@ block content
           label(for="idDueno") Dueño:
           select(name="idDueno", id="idDueno")
             option(value="") Sin dueño
-            // Aquí debes agregar las opciones para los dueños desde el servidor
-            //each dueno in duenos
-            //  option(value=dueno.id)= `${dueno.nombre} ${dueno.apellido}`
+            each dueno in duenos
+              option(value=dueno.id)= `${dueno.apellido} ${dueno.nombre}`
 
-          button(type="submit") Crear
+          button(type="submit", id="crear-btn") Crear
           button(type="button", id="cancelar-btn") Cancelar
 
   table.tabla
@@ -71,3 +70,52 @@ block content
             br
             a.btn(href=`/mascotas/${mascota.id}/editar`) Editar
             //a.btn(href=`/mascotas/${mascota.id}/eliminar`) Eliminar
+
+
+  script.
+    document.addEventListener('DOMContentLoaded', () => {// De momento quede aca, no funciona
+      const formNuevaMascota = document.getElementById('form-nueva-mascota');
+      const idDuenoSelect = document.getElementById('idDueno');
+
+      
+
+      formNuevaMascota.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const mascota = {
+        nombre: document.getElementById('nombre').value,
+        especie: document.getElementById('especie').value,
+        raza: document.getElementById('raza').value,
+        sexo: document.getElementById('sexo').value,
+        fechaNac: document.getElementById('fechaNac').value,
+        caractGenerales: document.getElementById('caractGenerales').value,
+        idDueno: document.getElementById('idDueno').value
+      };
+
+      //Llama a guardarMascota del controlador
+      guardarMascota(mascota);
+      });
+    });
+
+    //Fetch para la funcion guardarMascota
+    function guardarMascota(mascota) {
+      fetch('/mascotas/nuevo', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(mascota)
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          alert('Mascota creada con éxito');
+          window.location.reload();//Recarga la pagina
+        } else {
+          alert('Error al crear la mascota');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('Error al crear la mascota');
+      });
+    }

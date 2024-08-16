@@ -1,5 +1,6 @@
 import { getMascotas, getMascotasDueno,
     guardarMascota, darBaja, darAlta, actualizarMascota } from "../controllers/mascotaController.js";
+import {getDuenos} from "../controllers/duenosController.js";
 import { Router } from "express";
 
 const router = Router();
@@ -7,7 +8,8 @@ const router = Router();
 //http://localhost:3000/mascotas (GET Thunderclient)
 router.get("/mascotas", async (req, res) => {
     const mascotas = await getMascotas();
-    res.status(200).render('mascotas', { mascotas });
+    const duenos = await getDuenos();
+    res.status(200).render('mascotas', { mascotas, duenos });
 });
 
 //http://localhost:3000/mascotas/nuevo (POST Thunderclient)
